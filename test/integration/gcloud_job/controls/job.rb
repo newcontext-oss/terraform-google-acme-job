@@ -24,7 +24,7 @@ control "firewall" do
 
   describe command('gcloud compute firewall-rules describe job-to-db-tcp28015-ingress') do
     its('stdout') { should match (/allowed:.*- IPProtocol: tcp.*ports:.*- '28015'/m) }
-    its('stdout') { should match (/direction: EGRESS/) }
+    its('stdout') { should match (/direction: INGRESS/) }
     its('stdout') { should match (/network:.*global\/networks\/test-org/) }
     its('stdout') { should match (/priority: 998/) }
     its('stdout') { should match (/sourceTags:.*- job/m) }
