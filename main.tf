@@ -52,8 +52,8 @@ resource "google_compute_instance" "job" {
   }
 }
 
-resource "google_compute_firewall" "job_tcp22_ingress" {
-  name    = "${random_pet.name.id}-tcp22-ingress"
+resource "google_compute_firewall" "allow_ssh_ingress" {
+  name    = "${random_pet.name.id}-allow-ssh-ingress"
   network = "${data.google_compute_subnetwork.job.network}"
 
   direction = "INGRESS"
@@ -70,8 +70,8 @@ resource "google_compute_firewall" "job_tcp22_ingress" {
   target_tags = ["job"]
 }
 
-resource "google_compute_firewall" "job_to_db_tcp28015_ingress" {
-  name    = "${random_pet.name.id}-to-db-tcp28015-ingress"
+resource "google_compute_firewall" "allow_data_ingress_to_db" {
+  name    = "${random_pet.name.id}-allow-data-ingress-to-db"
   network = "${data.google_compute_subnetwork.job.network}"
 
   direction = "INGRESS"
