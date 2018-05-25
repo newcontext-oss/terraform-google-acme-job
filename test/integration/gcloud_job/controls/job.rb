@@ -85,9 +85,8 @@ control "firewall rules" do
       expect(subject.stdout).to match /priority: 998/
     end
 
-
     specify "should source instances tagged as a job" do
-      expect(subject.stdout).to match /targetTags:.*- job/m
+      expect(subject.stdout).to match /sourceTags:.*- job/m
     end
 
     specify "should target instances tagged as a database" do
