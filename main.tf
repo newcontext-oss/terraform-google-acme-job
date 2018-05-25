@@ -1,13 +1,9 @@
-provider "google" {
-  version = "~> 1.0"                                                                                                         
-}
-
 data "google_compute_network" "main" {
   name = "${var.network_name}"
 }
 
 data "google_compute_subnetwork" "job" {
-  name   = "job"
+  name = "job"
 }
 
 data "template_file" "startup_script" {
@@ -38,8 +34,7 @@ resource "google_compute_instance" "job" {
   }
 
   // Local SSD disk
-  scratch_disk {
-  }
+  scratch_disk {}
 
   network_interface {
     subnetwork = "${data.google_compute_subnetwork.job.self_link}"
@@ -50,9 +45,9 @@ resource "google_compute_instance" "job" {
   }
 
   metadata {
-    sshKeys = "ubuntu:${file(var.ssh_public_key_filepath)}",
-    block-project-ssh-keys = "TRUE",
-    startup-script = "${data.template_file.startup_script.rendered}"
+    sshKeys                = "ubuntu:${file(var.ssh_public_key_filepath)}"
+    block-project-ssh-keys = "TRUE"
+    startup-script         = "${data.template_file.startup_script.rendered}"
   }
 }
 
