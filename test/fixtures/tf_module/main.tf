@@ -19,7 +19,7 @@ provider "template" {
 
 module "network" {
   organization_name = "test-org"
-  source            = "git::ssh://git@github.com/newcontext/tf_module_gcloud_network.git?ref=ncs-alane-job-subnetwork-name"
+  source            = "git::ssh://git@github.com/newcontext/tf_module_gcloud_network.git"
 }
 
 module "db" {
