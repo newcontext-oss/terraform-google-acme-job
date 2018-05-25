@@ -30,9 +30,9 @@ module "db" {
 }
 
 module "job" {
-  network_name   = "test-org"
   db_internal_ip          = "${module.db.internal_ip}"
   engineer_cidrs          = "${var.engineer_cidrs}"
   source                  = "../../.."
   ssh_public_key_filepath = "${path.module}/files/insecure.pub"
+  subnetwork_name         = "${module.network.job_subnetwork_name}"
 }
