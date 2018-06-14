@@ -1,4 +1,4 @@
-# tf_module_glcoud_job
+# terraform-google-acme-job
 
 Terraform module for building out job server on Google Cloud Services
 
@@ -10,7 +10,7 @@ Call it as a module from another Terraform repository.
 
 ```sh
 module "job" {
-  source = "tf_module_gcloud_job"_
+  source = "terraform-google-acme-job"
 
   db_internal_ip = "x.x.x.x"
 
